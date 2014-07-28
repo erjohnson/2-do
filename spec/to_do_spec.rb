@@ -22,6 +22,12 @@ describe Task do
     test_task.due_date = '5 days'
     expect(test_task.due_date).to eq '5 days'
   end
+
+  it 'lets you add a priority for tasks' do
+    test_task = Task.new 'a new task'
+    test_task.priority = 1
+    expect(test_task.priority).to eq 1
+  end
 end
 
 describe List do
@@ -52,5 +58,16 @@ describe List do
     new_list.add_task('eat the dishes')
     p new_list.tasks.inspect
     expect(new_list.tasks.at(0).description).to eq 'wash the garbage'
+  end
+
+  it 'lets you sort the tasks by name' do
+    new_list = List.new 'Jobs'
+    new_list.add_task('wash the garbage')
+    new_list.add_task('eat the dishes')
+    new_list.add_task('apples')
+    new_list.sort_by_name
+    expect(new_list.tasks.at(0).description).to eq 'apples'
+    expect(new_list.tasks.at(1).description).to eq 'eat the dishes'
+    expect(new_list.tasks.at(2).description).to eq 'wash the garbage'
   end
 end

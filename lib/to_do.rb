@@ -1,11 +1,12 @@
 class Task
 
-  attr_accessor :description, :done, :due_date
+  attr_accessor :description, :done, :due_date, :priority
 
   def initialize description
     @description = description
     @done = false
     @due_date = '5 days'
+    @priority = 1
   end
 end
 
@@ -20,5 +21,9 @@ class List
 
   def add_task description
     @tasks << Task.new(description)
+  end
+
+  def sort_by_name
+    @tasks.sort! {|a,b| a.description <=> b.description}
   end
 end
