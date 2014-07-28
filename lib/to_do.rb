@@ -20,11 +20,12 @@ end
 
 class List
 
-  attr_accessor :name, :tasks
+  attr_accessor :name, :tasks, :done_tasks
 
   def initialize name
     @name = name
     @tasks = []
+    @done_tasks = []
   end
 
   def add_task description
@@ -43,5 +44,13 @@ class List
   def sort_by_due_date
     @tasks.sort! { |a, b| a.due_date <=> b.due_date }
     @tasks.reverse!
+  end
+
+  def show_done_tasks
+    @tasks.each do |task|
+      if task.done == true
+        @done_tasks << task
+      end
+    end
   end
 end

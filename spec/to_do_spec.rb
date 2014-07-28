@@ -68,7 +68,6 @@ describe List do
     new_list = List.new 'Jobs'
     new_list.add_task('wash the garbage')
     new_list.add_task('eat the dishes')
-    p new_list.tasks.inspect
     expect(new_list.tasks.at(0).description).to eq 'wash the garbage'
   end
 
@@ -109,5 +108,17 @@ describe List do
     expect(new_list.tasks.at(0).due_date).to eq '5 days'
     expect(new_list.tasks.at(1).due_date).to eq '3 days'
     expect(new_list.tasks.at(2).due_date).to eq '1 day'
+  end
+
+  it 'lists all the tasks marked done' do
+    new_list = List.new 'Jobs'
+    new_list.add_task('wash the garbage')
+    new_list.add_task('eat the dishes')
+    new_list.add_task('apples')
+    new_list.tasks.at(0).mark_done
+    new_list.tasks.at(2).mark_done
+    new_list.show_done_tasks
+    p new_list.done_tasks.inspect
+    expect(new_list.done_tasks.length).to eq 2
   end
 end
