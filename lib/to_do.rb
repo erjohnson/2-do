@@ -8,6 +8,14 @@ class Task
     @due_date = '5 days'
     @priority = 1
   end
+
+  def mark_done
+    @done = true
+  end
+
+  def edit_description new_description
+    @description = new_description
+  end
 end
 
 class List

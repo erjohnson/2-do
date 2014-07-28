@@ -14,7 +14,7 @@ describe Task do
 
   it 'lets you read if the task is done' do
     test_task = Task.new 'a new task'
-    expect(test_task.done).to eq(false)
+    expect(test_task.done).to eq false
   end
 
   it 'lets you add a due date to your task' do
@@ -27,6 +27,18 @@ describe Task do
     test_task = Task.new 'a new task'
     test_task.priority = 1
     expect(test_task.priority).to eq 1
+  end
+
+  it 'lets you mark the task as done' do
+    test_task = Task.new 'a new task'
+    test_task.mark_done
+    expect(test_task.done).to eq true
+  end
+
+  it 'lets you edit a tasks description' do
+    test_task = Task.new 'a new task'
+    test_task.edit_description 'wash the zebra'
+    expect(test_task.description).to eq 'wash the zebra'
   end
 end
 
