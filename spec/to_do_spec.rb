@@ -70,4 +70,18 @@ describe List do
     expect(new_list.tasks.at(1).description).to eq 'eat the dishes'
     expect(new_list.tasks.at(2).description).to eq 'wash the garbage'
   end
+
+  it 'lets you sort the tasks by priority' do
+    new_list = List.new 'Jobs'
+    new_list.add_task('wash the garbage')
+    new_list.add_task('eat the dishes')
+    new_list.add_task('apples')
+    new_list.tasks.at(0).priority = 1
+    new_list.tasks.at(1).priority = 3
+    new_list.tasks.at(2).priority = 2
+    new_list.sort_by_priority
+    expect(new_list.tasks.at(0).priority).to eq 3
+    expect(new_list.tasks.at(1).priority).to eq 2
+    expect(new_list.tasks.at(2).priority).to eq 1
+  end
 end

@@ -26,4 +26,9 @@ class List
   def sort_by_name
     @tasks.sort! {|a,b| a.description <=> b.description}
   end
+
+  def sort_by_priority
+    @tasks.sort! {|a,b| a.priority <=> b.priority}
+    @tasks.reverse!
+  end
 end
