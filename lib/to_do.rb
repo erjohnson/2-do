@@ -53,4 +53,8 @@ class List
       end
     end
   end
+
+  def delete_task description
+    @tasks.delete_if {|task| task.description == description }
+  end
 end

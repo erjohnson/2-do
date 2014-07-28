@@ -121,4 +121,12 @@ describe List do
     p new_list.done_tasks.inspect
     expect(new_list.done_tasks.length).to eq 2
   end
+
+  it 'lets you delete tasks' do
+    new_list = List.new 'Jobs'
+    new_list.add_task('wash the zebra')
+    new_list.add_task('eat the dishes')
+    new_list.delete_task('wash the zebra')
+    expect(new_list.tasks.at(0).description).to eq 'eat the dishes'
+  end
 end
