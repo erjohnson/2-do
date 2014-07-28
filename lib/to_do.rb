@@ -24,11 +24,16 @@ class List
   end
 
   def sort_by_name
-    @tasks.sort! {|a,b| a.description <=> b.description}
+    @tasks.sort! { |a, b| a.description <=> b.description }
   end
 
   def sort_by_priority
-    @tasks.sort! {|a,b| a.priority <=> b.priority}
+    @tasks.sort! { |a, b| a.priority <=> b.priority }
+    @tasks.reverse!
+  end
+
+  def sort_by_due_date
+    @tasks.sort! { |a, b| a.due_date <=> b.due_date }
     @tasks.reverse!
   end
 end

@@ -84,4 +84,18 @@ describe List do
     expect(new_list.tasks.at(1).priority).to eq 2
     expect(new_list.tasks.at(2).priority).to eq 1
   end
+
+  it 'lets you sort the tasks by due date' do
+    new_list = List.new 'Jobs'
+    new_list.add_task('wash the garbage')
+    new_list.add_task('eat the dishes')
+    new_list.add_task('apples')
+    new_list.tasks.at(0).due_date = '3 days'
+    new_list.tasks.at(1).due_date = '1 day'
+    new_list.tasks.at(2).due_date = '5 days'
+    new_list.sort_by_due_date
+    expect(new_list.tasks.at(0).due_date).to eq '5 days'
+    expect(new_list.tasks.at(1).due_date).to eq '3 days'
+    expect(new_list.tasks.at(2).due_date).to eq '1 day'
+  end
 end
